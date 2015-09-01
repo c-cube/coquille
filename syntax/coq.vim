@@ -36,7 +36,7 @@ endif
 " Coq is case sensitive.
 syn case match
 
-syn cluster coqVernac contains=coqRequire,coqCheck,coqEval,coqNotation,coqTacNotation,coqDecl,coqThm,coqLtacDecl,coqDef,coqFix,coqInd,coqRec,coqShow
+syn cluster coqVernac contains=coqRequire,coqCheck,coqEval,coqNotation,coqTacNotation,coqDecl,coqThm,coqLtacDecl,coqDef,coqFix,coqInd,coqRec,coqClass,coqShow
 
 " Various
 syn match   coqError             "\S\+"
@@ -286,6 +286,10 @@ syn region coqRecStart   contained contains=coqRecField,@coqTerm start="{" match
 syn region coqRecField   contained contains=coqField matchgroup=coqVernacPunctuation start="{" end=":"
 syn region coqRecField   contained contains=coqField matchgroup=coqVernacPunctuation start=";" end=":"
 syn match coqField       contained "[_[:alpha:]][_'[:alnum:]]*"
+
+" Type Classes
+syn region coqClass     contains=coqRecProfile start="\<Class\>" matchgroup=coqVernacPunctuation end="\.\_s" keepend
+syn region coqInstance  contained contains=@coqTerm,coqRecContent matchgroup=coqVernacPunctuation start="\<Instance\>" end="\.\_s"
 
 " Various (High priority)
 syn region  coqComment           containedin=ALL contains=coqComment,coqTodo start="(\*" end="\*)" extend keepend
